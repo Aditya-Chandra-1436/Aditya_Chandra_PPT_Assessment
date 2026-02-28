@@ -1,0 +1,13 @@
+lsblk
+sudo fdisk /dev/nvme1n1
+sudo mkfs.ext4 /dev/nvme1n1p1
+sudo mkdir /mnt/task3
+sudo mount /dev/nvme1n1p1 /mnt/task3
+echo "Task 3 Snapshot Test Data" | sudo tee /mnt/task3/testfile.txt
+cat /mnt/task3/testfile.txt
+
+On EC2 Instance in AZ-2
+lsblk
+sudo mkdir /mnt/task3
+sudo mount /dev/nvme1n1p1 /mnt/task3
+cat /mnt/task3/testfile.txt

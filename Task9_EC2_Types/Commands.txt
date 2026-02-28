@@ -1,0 +1,9 @@
+sudo apt update
+sudo apt install unzip curl -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+aws sts get-caller-identity
+echo "Task 9 IAM Role Test" > task9.txt
+aws s3 cp task9.txt s3://<your-bucket-name>/
+aws s3 ls s3://task9-s3-access-aditya/

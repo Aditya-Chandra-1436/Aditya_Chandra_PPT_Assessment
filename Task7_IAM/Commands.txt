@@ -1,0 +1,13 @@
+EC2-1
+sudo apt update
+sudo apt install nfs-common -y
+sudo mkdir /mnt/efs
+sudo mount -t nfs4 <EFS-DNS-NAME>:/ /mnt/efs
+echo "Hello from EC2-1" | sudo tee /mnt/efs/shared.txt
+
+EC2-2
+sudo apt update
+sudo apt install nfs-common -y
+sudo mkdir /mnt/efs
+sudo mount -t nfs4 <EFS-DNS-NAME>:/ /mnt/efs
+cat /mnt/efs/shared.txt
