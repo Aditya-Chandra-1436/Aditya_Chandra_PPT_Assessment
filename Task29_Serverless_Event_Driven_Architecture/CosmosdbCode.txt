@@ -1,0 +1,22 @@
+import logging
+import uuid
+import azure.functions as func
+from azure.cosmos import CosmosClient
+
+def main(myblob: func.InputStream):
+
+    url = "YOUR_COSMOS_URL"
+    key = "YOUR_COSMOS_KEY"
+
+    client = CosmosClient(url, credential=key)
+    database = client.get_database_client("Task5DB")
+    container = database.get_container_client("Task5Container")
+
+    item = {
+        "id": str(uuid.uuid4()),
+        "file_name": myblob.name
+    }
+
+    container.create_item(body=item)
+
+    logging.info(f"Stored {myblob.name} in Cosmos DB")

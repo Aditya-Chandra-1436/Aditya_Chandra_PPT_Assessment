@@ -1,0 +1,7 @@
+chmod 400 key.pem
+ssh -i key.pem ec2-user@<Bastion-Public-IP>
+scp -i key.pem key.pem ec2-user@<Bastion-Public-IP>:/home/ec2-user
+chmod 400 key.pem
+ssh -i key.pem ec2-user@<Private-IP>
+ping google.com
+exit

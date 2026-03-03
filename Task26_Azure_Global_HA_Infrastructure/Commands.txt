@@ -1,0 +1,7 @@
+sudo apt update
+sudo apt install apache2 -y
+echo "Hello from $(hostname)" | sudo tee /var/www/html/index.html
+
+az vm stop --resource-group rg-ha-task2 --name vm1
+
+az group delete --name rg-ha-task2 --yes --no-wait
